@@ -24,6 +24,16 @@ docker run -p 6333:6333 \
 Data can be downloaded from [link](https://drive.google.com/drive/folders/1aropPBbAcQ1C-SjTY8BgwtnpiL2pinS3?usp=share_link) and unzipped into `qdrant_storage` folder.
 The data has been produced by running `upload_vector.py`, which loads wikipedia data and REALM vectors into Qdrant Vector DB. So you do not need to run it again.
 
+Once you had unzipped into `qdrant_storage` folder. You can verify the data by running:
+```shell
+python util/verify_vector.py
+### Output
+collections=[CollectionDescription(name='wiki_collection')]
+status=<CollectionStatus.GREEN: 'green'> optimizer_status=<OptimizersStatusOneOf.OK: 'ok'> vectors_count=13353718 indexed_vectors_count=13353718 points_count=13353718 segments_count=9 config=CollectionConfig(params=CollectionParams(vectors=VectorParams(size=128, distance=<Distance.DOT: 'Dot'>), shard_number=1, on_disk_payload=True), hnsw_config=HnswConfig(m=16, ef_construct=100, full_scan_threshold=10000, max_indexing_threads=0), optimizer_config=OptimizersConfig(deleted_threshold=0.2, vacuum_min_vector_number=1000, default_segment_number=0, max_segment_size=None, memmap_threshold=None, indexing_threshold=20000, flush_interval_sec=5, max_optimization_threads=1), wal_config=WalConfig(wal_capacity_mb=32, wal_segments_ahead=0)) payload_schema={}
+```
+You will see there are 13353718 indexed vectors in the collection.
+
+
 ### Client Installation
 ```shell
 !pip install requirements.txt
