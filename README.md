@@ -36,7 +36,7 @@ You will see there are 13353718 indexed vectors in the collection.
 
 ### Client Installation
 ```shell
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 ## Usage
